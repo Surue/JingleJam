@@ -27,7 +27,17 @@ public class PlayerController : MonoBehaviour
     }
 
     void FixedUpdate() {
+        MoveRight();
         DoJump();
+    }
+
+    void MoveRight() {
+        transform.position = new Vector2(
+            Mathf.Lerp(
+                transform.position.x,
+                transform.position.x + speed,
+                Time.fixedDeltaTime),
+            transform.position.y);
     }
 
     void StartJump() {
@@ -42,9 +52,9 @@ public class PlayerController : MonoBehaviour
     void DoJump() {
         if(!isJumping) return;
         
-        transform.position = new Vector2(transform.position.x, jumpBeginYPosition + curve.Evaluate((Time.time - jumpBeginTime) * (1 / duration)));
+        transform.position = new Vector2(transform.position.x, jumpBeginYPosition + curve.Evaluate((Time.fixedTime - jumpBeginTime) * (1 / duration)));
 
-        if (0 == curve.Evaluate((Time.time - jumpBeginTime) * (1 / duration))) {
+        if (0 == curve.Evaluate((Time.fixedTime - jumpBeginTime) * (1 / duration))) {
             isJumping = false;
         }
     }
