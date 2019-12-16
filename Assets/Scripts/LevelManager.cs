@@ -7,9 +7,15 @@ public class LevelManager : MonoBehaviour {
     static LevelManager instance = null;
 
     int val = 10;
+
+    [SerializeField] AudioPeer audioPeer;
     
     public static LevelManager Instance => Instance;
+    
+    
     public static int Value => instance.val;
+
+    public static AudioPeer AudioPeer => instance.audioPeer;
 
     void Awake() {
         instance = this;

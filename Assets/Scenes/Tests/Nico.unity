@@ -533,6 +533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce94129aa64a7504a9fc6469aaa7a620, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  audioPeer: {fileID: 718745909}
 --- !u!4 &902246252
 Transform:
   m_ObjectHideFlags: 0
@@ -1158,22 +1159,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a49db0f902b0ab9428fc3629f6ecf7dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lvl1:
-  - {fileID: 970781546}
-  - {fileID: 461873449}
-  lvl2:
-  - {fileID: 176951960}
-  - {fileID: 1694923120}
-  lvl3:
-  - {fileID: 1154670048}
-  - {fileID: 1376362735}
-  lvl4:
-  - {fileID: 1392268543}
-  - {fileID: 627324044}
-  speed1: 1
-  speed2: 1.1
-  speed3: 1.2
-  speed4: 1.3
+  parallaxGroups:
+  - images:
+    - {fileID: 970781546}
+    - {fileID: 461873449}
+    imagesGhost: []
+    speed: 4
+  - images:
+    - {fileID: 176951960}
+    - {fileID: 1694923120}
+    imagesGhost: []
+    speed: 4.2
+  - images:
+    - {fileID: 1154670048}
+    - {fileID: 1376362735}
+    imagesGhost: []
+    speed: 4.5
+  - images:
+    - {fileID: 1392268543}
+    - {fileID: 627324044}
+    imagesGhost: []
+    speed: 5
+  sizeX: 20.48
 --- !u!4 &1599458492
 Transform:
   m_ObjectHideFlags: 0

@@ -1,59 +1,78 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class BackgroundParallax : MonoBehaviour {
-    
-    [SerializeField] List<Transform> lvl1;
-    [SerializeField] List<Transform> lvl2;
-    [SerializeField] List<Transform> lvl3;
-    [SerializeField] List<Transform> lvl4;
-
-    [SerializeField] float speed1 = 1;
-    [SerializeField] float speed2 = 1.1f;
-    [SerializeField] float speed3 = 1.2f;
-    [SerializeField] float speed4 = 1.3f;
-
-    List<float> speeds = new List<float>{1, 1.1f, 1.2f, 1.3f, 1.4f};
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
+    [Serializable]
+    class ParallaxGroup{
+        public List<Transform> images;
+        [HideInInspector] public  List<Transform> imagesGhost;
+        public float speed;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        foreach (Transform transform1 in lvl1) {
-            transform1.position += Vector3.left * speeds[0] * Time.deltaTime;
+    [SerializeField] List<ParallaxGroup> parallaxGroups;
 
-            if (transform1.position.x < -20.48f) {
-                transform1.position = new Vector3(20.48f, transform1.position.y, transform1.position.z);
+    [SerializeField] float sizeX = 20.48f;
+
+    AudioPeer audioPeer;
+
+    void Start() {
+        foreach (ParallaxGroup parallaxGroup in parallaxGroups) {
+            parallaxGroup.imagesGhost = new List<Transform>();
+            
+            for (int i = 0; i < parallaxGroup.images.Count; i++) {
+                GameObject o = Instantiate(parallaxGroup.images[i].gameObject, parallaxGroup.images[i].parent, true);
+                parallaxGroup.imagesGhost.Add(o.transform);
+                parallaxGroup.imagesGhost[i].position += Vector3.up * 0.1f;
+
+                parallaxGroup.imagesGhost[i].GetComponent<SpriteRenderer>().color = new Color(1, 1, 1, 0.7f);
             }
         }
-        
-        foreach (Transform transform1 in lvl2) {
-            transform1.position += Vector3.left * speeds[1] * Time.deltaTime;
-            
-            if (transform1.position.x < -20.48f) {
-                transform1.position = new Vector3(20.48f, transform1.position.y, transform1.position.z);
-            }
+
+        audioPeer = LevelManager.AudioPeer;
+    }
+
+    float beatValue = 0;
+
+    // Update is called once per frame
+    void Update() {
+        float tmpValue = 0;
+        foreach (float f in audioPeer.freqBand) {
+            tmpValue += f;
+        }
+
+        tmpValue /= audioPeer.freqBand.Length;
+
+        bool isBeat = false;
+        if (tmpValue > beatValue) {
+            beatValue = tmpValue;
+            isBeat = true;
         }
         
-        foreach (Transform transform1 in lvl3) {
-            transform1.position += Vector3.left * speeds[3] * Time.deltaTime;
-            
-            if (transform1.position.x < -20.48f) {
-                transform1.position = new Vector3(20.48f, transform1.position.y, transform1.position.z);
-            }
-        }
-        
-        foreach (Transform transform1 in lvl4) {
-            transform1.position += Vector3.left * speeds[4] * Time.deltaTime;
-            
-            if (transform1.position.x < -20.48f) {
-                transform1.position = new Vector3(20.48f, transform1.position.y, transform1.position.z);
+        foreach (ParallaxGroup parallaxGroup in parallaxGroups) {
+            Vector3 displacementVector = Time.deltaTime * parallaxGroup.speed * Vector3.left;
+
+            for (int i = 0; i < parallaxGroup.images.Count; i++) {
+                parallaxGroup.images[i].position += displacementVector;
+                parallaxGroup.imagesGhost[i].position += displacementVector;
+
+                //Beat effect
+                if (isBeat) {
+                    parallaxGroup.imagesGhost[i].position += Vector3.up * beatValue; 
+                } else if(parallaxGroup.imagesGhost[i].position.y > 0) {
+                    parallaxGroup.imagesGhost[i].position += Vector3.down * Time.deltaTime; 
+                    beatValue = parallaxGroup.imagesGhost[i].position.y;
+                }
+                
+                //If outside bounds, move it 
+                if (!(parallaxGroup.images[i].position.x < -sizeX)) continue;
+                parallaxGroup.images[i].position = new Vector3(parallaxGroup.images[i].position.x + (2 * sizeX),
+                    parallaxGroup.images[i].position.y, parallaxGroup.images[i].position.z);
+                    
+                parallaxGroup.imagesGhost[i].position = new Vector3(
+                    parallaxGroup.imagesGhost[i].position.x + (2 * sizeX), parallaxGroup.imagesGhost[i].position.y,
+                    parallaxGroup.imagesGhost[i].position.z);
             }
         }
     }
