@@ -3,59 +3,53 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
-{
+public class PlayerController : MonoBehaviour {
+    [SerializeField] Rigidbody2D rigidBody;
+    
     [Header("Player Settings")]
     [SerializeField] float speed = 1;
 
     [Header("Jump Settings")]
-    [SerializeField] AnimationCurve curve;
-    [SerializeField] float height = 1;
-    [SerializeField] float duration = 1;
-    [SerializeField] float fallSpeed = 1;
-
-    float jumpBeginTime;
-    float jumpBeginYPosition;
+    [SerializeField] float jumpHeight = 1;
     bool isJumping = false;
 
-    void Update() {
-        bool jump = Input.GetButtonDown("Jump");
-        
-        if (jump) {
-            StartJump();
-        }
-    }
+    float bestHeight = 0;
+    float jumpForce;
+    
+    
 
-    void FixedUpdate() {
+    void Start() {
+        rigidBody = GetComponent<Rigidbody2D>();
+    }
+    
+    void Update() {
+        if (Input.GetButtonDown("Jump")) {
+            Jump();
+        }
+        
         MoveRight();
-        DoJump();
+
+        Debug.Log(transform.position.y);
+        if (bestHeight < transform.position.y)
+            bestHeight = transform.position.y;
+
+        if (Input.GetKeyDown("c"))
+            PrintBestHeight();
     }
 
     void MoveRight() {
-        transform.position = new Vector2(
-            Mathf.Lerp(
-                transform.position.x,
-                transform.position.x + speed,
-                Time.fixedDeltaTime),
-            transform.position.y);
+        rigidBody.velocity = new Vector2(speed, rigidBody.velocity.y);
     }
 
-    void StartJump() {
-        if(isJumping) return;
+    void Jump() {
+        //if(isJumping) return;
         
-        jumpBeginTime = Time.time;
-        jumpBeginYPosition = transform.position.y;
-        
+        rigidBody.velocity = new Vector2(rigidBody.velocity.x, Mathf.Sqrt(2 * jumpHeight * -Physics.gravity.y * rigidBody.gravityScale));
+
         isJumping = true;
     }
 
-    void DoJump() {
-        if(!isJumping) return;
-        
-        transform.position = new Vector2(transform.position.x, jumpBeginYPosition + curve.Evaluate((Time.fixedTime - jumpBeginTime) * (1 / duration)));
-
-        if (0 == curve.Evaluate((Time.fixedTime - jumpBeginTime) * (1 / duration))) {
-            isJumping = false;
-        }
+    void PrintBestHeight() {
+        Debug.Log("Best height : " + bestHeight);
     }
 }
