@@ -7,34 +7,20 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] Rigidbody2D rigidBody;
     
     [Header("Player Settings")]
-    [SerializeField] float speed = 1;
-
-    [Header("Jump Settings")]
+    [SerializeField] float speed = 110.0f / 60.0f;
     [SerializeField] float jumpHeight = 1;
     bool isJumping = false;
 
-    float bestHeight = 0;
     float jumpForce;
     
-    
-
     void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
+        jumpForce = Mathf.Sqrt(2 * jumpHeight * -Physics.gravity.y * rigidBody.gravityScale);
     }
     
     void Update() {
-        if (Input.GetButtonDown("Jump")) {
-            Jump();
-        }
-        
+        Jump();
         MoveRight();
-
-        Debug.Log(transform.position.y);
-        if (bestHeight < transform.position.y)
-            bestHeight = transform.position.y;
-
-        if (Input.GetKeyDown("c"))
-            PrintBestHeight();
     }
 
     void MoveRight() {
@@ -42,14 +28,14 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Jump() {
-        //if(isJumping) return;
+        if(isJumping || !Input.GetButtonDown("Jump")) return;
         
-        rigidBody.velocity = new Vector2(rigidBody.velocity.x, Mathf.Sqrt(2 * jumpHeight * -Physics.gravity.y * rigidBody.gravityScale));
+        rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
 
         isJumping = true;
     }
 
-    void PrintBestHeight() {
-        Debug.Log("Best height : " + bestHeight);
+    void GrounCheck() {
+        if(!isJumping) return;
     }
 }

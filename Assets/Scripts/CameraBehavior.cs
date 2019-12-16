@@ -21,7 +21,7 @@ public class CameraBehavior : MonoBehaviour {
     }
 
     void FixedUpdate() {
-        transform.position = playerTransform.position;
+        transform.position = playerTransform.position + Vector3.back;
         CheckHeight();
     }
 
