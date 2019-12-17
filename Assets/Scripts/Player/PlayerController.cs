@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
     }
 
     void Jump() {
-        if(!isGrounded || !Input.GetButtonDown("Jump")) return;
+        if(!isGrounded || !Input.GetButton("Jump")) return;
         
         rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
     }
