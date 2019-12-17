@@ -1873,32 +1873,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 865851543, guid: 5ba2d7483edfc9248917564a825874d5, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 1d8c7bca778b3e74aa1f77e4f846f73f, type: 2}
-    - target: {fileID: 865851543, guid: 5ba2d7483edfc9248917564a825874d5, type: 3}
-      propertyPath: m_GravityScale
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 865851543, guid: 5ba2d7483edfc9248917564a825874d5, type: 3}
-      propertyPath: m_AngularDrag
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4097999050317297113, guid: 5ba2d7483edfc9248917564a825874d5,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 1d8c7bca778b3e74aa1f77e4f846f73f, type: 2}
     - target: {fileID: 4341429469655575043, guid: 5ba2d7483edfc9248917564a825874d5,
         type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 4341429469655575044, guid: 5ba2d7483edfc9248917564a825874d5,
-        type: 3}
-      propertyPath: gravityScale
-      value: 6.3
       objectReference: {fileID: 0}
     - target: {fileID: 4341429469655575045, guid: 5ba2d7483edfc9248917564a825874d5,
         type: 3}
@@ -1955,11 +1933,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4833921592881438625, guid: 5ba2d7483edfc9248917564a825874d5,
-        type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 1d8c7bca778b3e74aa1f77e4f846f73f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ba2d7483edfc9248917564a825874d5, type: 3}
 --- !u!114 &2044122876 stripped
