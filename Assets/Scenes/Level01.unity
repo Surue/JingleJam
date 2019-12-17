@@ -1017,6 +1017,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1239399552893706833, guid: cc4c2a0e6eaee7d44b08db340b7e5777,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 21613dddb8f3b214a9072b30d090e1ae, type: 3}
     - target: {fileID: 2167085038497495043, guid: cc4c2a0e6eaee7d44b08db340b7e5777,
         type: 3}
       propertyPath: m_Name
@@ -1873,10 +1878,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4097999050317297113, guid: 5ba2d7483edfc9248917564a825874d5,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4097999050317297113, guid: 5ba2d7483edfc9248917564a825874d5,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4341429469655575043, guid: 5ba2d7483edfc9248917564a825874d5,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4341429469655575044, guid: 5ba2d7483edfc9248917564a825874d5,
+        type: 3}
+      propertyPath: gravityScale
+      value: 6.35
       objectReference: {fileID: 0}
     - target: {fileID: 4341429469655575045, guid: 5ba2d7483edfc9248917564a825874d5,
         type: 3}

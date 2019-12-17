@@ -5007,7 +5007,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 7.333332
   jumpHeight: 2.3
-  gravityScale: 6.3
+  gravityScale: 6.29
 --- !u!212 &4341429469655575046
 SpriteRenderer:
   m_ObjectHideFlags: 0
