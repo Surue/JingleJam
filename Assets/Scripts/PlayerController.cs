@@ -4,21 +4,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-    [SerializeField] Rigidbody2D rigidBody;
-    
+    Rigidbody2D rigidBody;
+    GroundChecker groundChecker;
+
     [Header("Player Settings")]
     [SerializeField] float speed = 110.0f / 60.0f;
     [SerializeField] float jumpHeight = 1;
-    bool isJumping = false;
-
+    bool isGrounded = false;
     float jumpForce;
     
+    [SerializeField] LayerMask groundLayer;
+
     void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
+        groundChecker = GetComponentInChildren<GroundChecker>();
+        groundChecker.SetGroundLayer(groundLayer);
         jumpForce = Mathf.Sqrt(2 * jumpHeight * -Physics.gravity.y * rigidBody.gravityScale);
     }
     
     void Update() {
+        GroundCheck();
         Jump();
         MoveRight();
     }
@@ -28,14 +33,12 @@ public class PlayerController : MonoBehaviour {
     }
 
     void Jump() {
-        if(isJumping || !Input.GetButtonDown("Jump")) return;
+        if(!isGrounded || !Input.GetButtonDown("Jump")) return;
         
         rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
-
-        isJumping = true;
     }
 
-    void GrounCheck() {
-        if(!isJumping) return;
+    void GroundCheck() {
+        isGrounded = groundChecker.isGrounded;
     }
 }
