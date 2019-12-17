@@ -12,13 +12,10 @@ public class PlayerController : MonoBehaviour {
     [SerializeField] float jumpHeight = 1;
     bool isGrounded = false;
     float jumpForce;
-    
-    [SerializeField] LayerMask groundLayer;
 
     void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
         groundChecker = GetComponentInChildren<GroundChecker>();
-        groundChecker.SetGroundLayer(groundLayer);
         jumpForce = Mathf.Sqrt(2 * jumpHeight * -Physics.gravity.y * rigidBody.gravityScale);
     }
     
@@ -39,6 +36,6 @@ public class PlayerController : MonoBehaviour {
     }
 
     void GroundCheck() {
-        isGrounded = groundChecker.isGrounded;
+        isGrounded = groundChecker.IsGrounded;
     }
 }
