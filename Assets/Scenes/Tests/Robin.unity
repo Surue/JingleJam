@@ -2821,6 +2821,12 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!198 &763902914 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 3329193903443852637, guid: 5ba2d7483edfc9248917564a825874d5,
+    type: 3}
+  m_PrefabInstance: {fileID: 4341429469923611712}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &825558783
 GameObject:
   m_ObjectHideFlags: 0
@@ -6756,5 +6762,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5232731637603016580, guid: 5ba2d7483edfc9248917564a825874d5,
+        type: 3}
+      propertyPath: particleSystem
+      value: 
+      objectReference: {fileID: 763902914}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ba2d7483edfc9248917564a825874d5, type: 3}

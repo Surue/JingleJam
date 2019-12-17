@@ -4,14 +4,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class LevelManager : MonoBehaviour {
+    public interface IPausedListener {
+        void OnPaused();
+        void OnUnpaused();
+    }
+    
+    List<IPausedListener> callbacks = new List<IPausedListener>();
+
     static LevelManager instance = null;
 
     int val = 10;
 
     [SerializeField] AudioPeer audioPeer;
     
-    public static LevelManager Instance => Instance;
-    
+    public static LevelManager Instance => instance;
     
     public static int Value => instance.val;
 
@@ -31,5 +37,17 @@ public class LevelManager : MonoBehaviour {
     void Update()
     {
         
+    }
+
+    public void Pause() {
+        foreach (IPausedListener pausedListener in callbacks) {
+            pausedListener.OnPaused();
+        }
+    }
+
+    public void Unpause() {
+        foreach (IPausedListener pausedListener in callbacks) {
+            pausedListener.OnUnpaused();
+        }
     }
 }
