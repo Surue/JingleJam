@@ -18,7 +18,10 @@ public class AudioManager : MonoBehaviour, LevelManager.IPausedListener
 
     // Update is called once per frame
     void Update() {
-        
+        if (!audioSource.isPlaying) {
+            LevelManager.GameManager.Victory();
+            Destroy(this);
+        }
     }
 
     public void OnPaused() {

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 using Debug = UnityEngine.Debug;
 
@@ -17,13 +18,15 @@ public class GameManager : MonoBehaviour {
     [SerializeField] AudioClip winSound;
     AudioSource audioSource;
     
-    enum DeathStat {
+    enum GameState {
         NONE,
         IS_DYING,
-        RESPAWN
+        RESPAWN,
+        IS_WINING,
+        WIN,
     }
 
-    DeathStat deathStat = DeathStat.NONE;
+    GameState state = GameState.NONE;
 
     void Start() {
         camera = FindObjectOfType<CameraBehavior>();
@@ -32,36 +35,61 @@ public class GameManager : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
     }
 
-    void FixedUpdate() {
+    void Update() {
         Death();
     }
 
     void Death() {
-        switch (deathStat) {
-            case DeathStat.IS_DYING:
+        switch (state) {
+            case GameState.IS_DYING:
                 camera.StartScreenShake();
-                timeRemaining -= Time.fixedTime;
+                timeRemaining -= Time.deltaTime;
                 if (timeRemaining < 0) {
-                    deathStat = DeathStat.RESPAWN;
+                    state = GameState.RESPAWN;
                     timeRemaining = timeBeforTP;
                 }
                 break;
-            case DeathStat.RESPAWN:
+            case GameState.RESPAWN:
                 camera.StopScreenShake();
                 //playerController.transform.position = restartPos;
                 //restart music here
-                deathStat = DeathStat.NONE;
+                state = GameState.NONE;
                 
-                SceneManager.LoadScene("MainMenu");
+                SceneManager.LoadScene("Lose");
                 break;
+            case GameState.NONE:
+                break;
+            case GameState.IS_WINING:
+                timeRemaining -= Time.deltaTime;
+                if (timeRemaining < 0) {
+                    state = GameState.WIN;
+                    timeRemaining = timeBeforTP;
+                }
+                break;
+            case GameState.WIN:
+                SceneManager.LoadScene("Win");
+                break;
+            default:
+                throw new ArgumentOutOfRangeException();
         }
     }
 
     public void PlayerDied() {
-        Debug.Break();
-        deathStat = DeathStat.IS_DYING;
+        return;
+        timeRemaining = 4.0f;
+        
+        state = GameState.IS_DYING;
 
         audioSource.clip = loseSound;
+        audioSource.Play();
+    }
+
+    public void Victory() {
+        timeRemaining = winSound.length;
+        
+        state = GameState.IS_WINING;
+        
+        audioSource.clip = winSound;
         audioSource.Play();
     }
 }
