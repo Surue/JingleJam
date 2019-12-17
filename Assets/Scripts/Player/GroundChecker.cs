@@ -5,11 +5,13 @@ using UnityEngine;
 
 public class GroundChecker : MonoBehaviour {
     bool isGrounded = false;
+    bool isTouchingSnow = false;
 
     [SerializeField] ParticleSystem particleSystem;
     Rigidbody2D body;
     
     public bool IsGrounded => isGrounded;
+    public bool IsTouchingSnow => isTouchingSnow;
 
     bool isFalling = false;
 
@@ -22,7 +24,9 @@ public class GroundChecker : MonoBehaviour {
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.layer != LayerMask.NameToLayer("Ground")) return;
+        if (other.gameObject.layer != LayerMask.NameToLayer("Ground") &&
+            other.gameObject.layer != LayerMask.NameToLayer("Obstacle")) return;
+        
         if (isFalling) {
             particleSystem.Play();
         }
@@ -31,12 +35,19 @@ public class GroundChecker : MonoBehaviour {
     void OnTriggerStay2D(Collider2D other) {
         if (other.gameObject.layer == LayerMask.NameToLayer("Ground")) {
             isGrounded = true;
+            isTouchingSnow = true;
+        }
+        
+        if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle")) {
+            isGrounded = true;
         }
     }
 
     void OnTriggerExit2D(Collider2D other) {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground")) {
+        if (other.gameObject.layer != LayerMask.NameToLayer("Ground") ||
+            other.gameObject.layer != LayerMask.NameToLayer("Obstacle")) {
             isGrounded = false;
+            isTouchingSnow = false;
         }
     }
 }

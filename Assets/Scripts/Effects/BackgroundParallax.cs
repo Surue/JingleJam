@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class BackgroundParallax : MonoBehaviour, LevelManager.IPausedListener {
@@ -52,10 +53,7 @@ public class BackgroundParallax : MonoBehaviour, LevelManager.IPausedListener {
 
         playerOffsetPosX = player.transform.position.x - playerStartPosX;
         
-        float tmpValue = 0;
-        foreach (float f in audioPeer.freqBand) {
-            tmpValue += f;
-        }
+        float tmpValue = audioPeer.freqBand.Sum();
 
         tmpValue /= audioPeer.freqBand.Length;
 
@@ -64,8 +62,6 @@ public class BackgroundParallax : MonoBehaviour, LevelManager.IPausedListener {
             beatValue = tmpValue;
             isBeat = true;
         }
-        
-        Debug.Log(Vector3.right * playerOffsetPosX);
         
         transform.position = new Vector3(playerStartPosX + playerOffsetPosX, 0, 0);
         
