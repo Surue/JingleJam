@@ -29,9 +29,9 @@ public class CameraBehavior : MonoBehaviour {
         float y = transform.position.y;
         
         if (y > cameraMaxHeight) {
-            transform.position = new Vector2(transform.position.x, cameraMaxHeight);
+            transform.position = new Vector3(transform.position.x, cameraMaxHeight) + Vector3.back;
         } else if (y < cameraMinHeight) {
-            transform.position = new Vector2(transform.position.x, cameraMinHeight);
+            transform.position = new Vector3(transform.position.x, cameraMinHeight) + Vector3.back;
         }
     }
 
