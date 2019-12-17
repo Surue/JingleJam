@@ -1,8 +1,8 @@
-﻿
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CameraBehavior : MonoBehaviour {
     Transform playerTransform;
@@ -13,6 +13,20 @@ public class CameraBehavior : MonoBehaviour {
 
     float cameraMaxHeight;
     float cameraMinHeight;
+
+    [Header("ScreenShake Settings")]
+    [SerializeField] float screenShakeAmount = 0.7f;
+    [SerializeField] float screenShakeCancelDuration = 1.0f;
+    float screenShakeTimeBeforStop;
+
+    enum ShakeStat {
+        NO_SHAKE,
+        SHAKE_SHAKE,
+        CALM_DOWN
+    }
+
+    ShakeStat shakeStat = ShakeStat.NO_SHAKE;
+    
     void Start() {
         playerTransform = FindObjectOfType<PlayerController>().transform;
         float cameraHeight = GetComponent<Camera>().orthographicSize;
@@ -22,6 +36,7 @@ public class CameraBehavior : MonoBehaviour {
 
     void FixedUpdate() {
         transform.position = playerTransform.position + Vector3.back;
+        ShakeThat();
         CheckHeight();
     }
 
@@ -33,6 +48,35 @@ public class CameraBehavior : MonoBehaviour {
         } else if (y < cameraMinHeight) {
             transform.position = new Vector3(transform.position.x, cameraMinHeight) + Vector3.back;
         }
+    }
+
+
+    void ShakeThat() {
+        
+        switch (shakeStat) {
+            case ShakeStat.SHAKE_SHAKE:
+                transform.position = playerTransform.position + Random.insideUnitSphere * screenShakeAmount;
+                screenShakeTimeBeforStop = screenShakeCancelDuration;
+                break;
+            case ShakeStat.CALM_DOWN:
+                transform.position = 
+                    playerTransform.position +
+                    Random.insideUnitSphere * screenShakeAmount * (screenShakeTimeBeforStop / screenShakeCancelDuration);
+			
+                screenShakeTimeBeforStop -= Time.deltaTime;
+
+                if (screenShakeTimeBeforStop < 0)
+                    shakeStat = ShakeStat.NO_SHAKE;
+                break;
+        }
+    }
+    
+    public void StartScreenShake() {
+        shakeStat = ShakeStat.SHAKE_SHAKE;
+    }
+
+    public void StopScreenShake() {
+        shakeStat = ShakeStat.CALM_DOWN;
     }
 
     void OnDrawGizmos() {

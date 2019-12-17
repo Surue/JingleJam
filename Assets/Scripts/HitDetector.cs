@@ -6,7 +6,7 @@ using UnityEngine;
 public class HitDetector : MonoBehaviour {
     public bool hasHit = false;
 
-    void SetHasHitToFalse() {
+    public void SetHasHitToFalse() {
         hasHit = false;
     }
     void OnTriggerEnter2D(Collider2D other) {

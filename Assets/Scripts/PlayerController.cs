@@ -8,6 +8,8 @@ public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
     GroundChecker groundChecker;
     HitDetector hitDetector;
 
+    GameManager gameManager;
+
     [Header("Player Settings")]
     [SerializeField] float speed = (110.0f / 60.0f) * 2.0f;
     [SerializeField] float jumpHeight = 3;
@@ -18,13 +20,18 @@ public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
 
     bool isPaused = false;
 
+    bool hit = false;
+
     void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
         rigidBody.gravityScale = gravityScale;
+        
         groundChecker = GetComponentInChildren<GroundChecker>();
         hitDetector = GetComponent<HitDetector>();
+
+        gameManager = LevelManager.gameManager;
+        
         jumpForce = Mathf.Sqrt(2 * jumpHeight * -Physics.gravity.y * rigidBody.gravityScale);
-        Debug.Log("Jump force : " + jumpForce);
         
         LevelManager.Instance.AddPauseListener(this);
     }
@@ -35,6 +42,7 @@ public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
         GroundCheck();
         Jump();
         MoveRight();
+        Dead();
     }
 
     void MoveRight() {
@@ -51,6 +59,14 @@ public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
         isGrounded = groundChecker.IsGrounded;
     }
 
+    void Dead() {
+        if (hitDetector.hasHit || hit) {
+            gameManager.PlayerDied();
+            hit = false;
+            hitDetector.SetHasHitToFalse();
+        }
+    }
+
     public void OnPaused() {
         isPaused = true;
         rigidBody.velocity = Vector2.zero;
@@ -60,5 +76,10 @@ public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
     public void OnUnpaused() {
         isPaused = false;
         rigidBody.gravityScale = gravityScale;
+    }
+
+    void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
+            hit = true;
     }
 }

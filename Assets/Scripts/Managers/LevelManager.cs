@@ -23,14 +23,18 @@ public class LevelManager : MonoBehaviour {
 
     public static AudioPeer AudioPeer => instance.audioPeer;
 
+
+    static GameManager _gameManager;
+
+    public static GameManager gameManager => _gameManager;
+
     void Awake() {
         instance = this;
     }
 
     // Start is called before the first frame update
-    void Start()
-    {
-        
+    void Start() {
+        _gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
