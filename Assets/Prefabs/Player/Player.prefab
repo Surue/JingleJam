@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7197157793217669247}
   - component: {fileID: 254284290771378471}
   - component: {fileID: 2043724918942169081}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: HitDetector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -82,7 +82,7 @@ GameObject:
   - component: {fileID: 7028589051798095472}
   - component: {fileID: 3329193903443852637}
   - component: {fileID: 3648195804716769561}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4894,7 +4894,7 @@ GameObject:
   - component: {fileID: 7828415053664060163}
   - component: {fileID: 1104515214027388045}
   - component: {fileID: 5232731637603016580}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GroundCheck
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4969,7 +4969,7 @@ GameObject:
   - component: {fileID: 5182874412875858800}
   - component: {fileID: 865851543}
   - component: {fileID: 4097999050317297113}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5086,6 +5086,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a2c0de6389359348a8554bf94a91499, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedAccumulation: 0.01
 --- !u!50 &865851543
 Rigidbody2D:
   serializedVersion: 4

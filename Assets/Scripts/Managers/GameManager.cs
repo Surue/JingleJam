@@ -43,7 +43,7 @@ public class GameManager : MonoBehaviour {
                 break;
             case DeathStat.RESPAWN:
                 camera.StopScreenShake();
-                playerController.transform.position = restartPos;
+//                playerController.transform.position = restartPos;
                 //restart music here
                 deathStat = DeathStat.NONE;
                 break;
