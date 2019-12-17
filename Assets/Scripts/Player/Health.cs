@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour {
+public class Health : MonoBehaviour, LevelManager.IPausedListener {
     SpriteRenderer spriteRenderer;
 
     GroundChecker groundChecker;
@@ -15,6 +15,8 @@ public class Health : MonoBehaviour {
     float snowAccumulated = 0;
 
     [Header("Health")] [SerializeField] float healthReductionOnHit = 0.5f;
+
+    bool isPaused = false;
     
     void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -24,6 +26,8 @@ public class Health : MonoBehaviour {
     }
 
     void Update() {
+        if(isPaused) return;
+        
         if (groundChecker.IsTouchingSnow) {
             spriteRenderer.color = Color.white;
 
@@ -51,5 +55,13 @@ public class Health : MonoBehaviour {
             }
             LevelManager.GameManager.PlayerDied();
         }
+    }
+
+    public void OnPaused() {
+        isPaused = true;
+    }
+
+    public void OnUnpaused() {
+        isPaused = false;
     }
 }

@@ -40,4 +40,8 @@ public class PauseController : MonoBehaviour {
     public void ReturnMainMenu() {
         SceneManager.LoadScene("MainMenu");
     }
+
+    public void Restart() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);    
+    }
 }
