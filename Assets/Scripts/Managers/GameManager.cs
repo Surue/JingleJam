@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour {
     void Start() {
         camera = FindObjectOfType<CameraBehavior>();
         playerController = LevelManager.PlayerController;
+        restartPos = playerController.transform.position;
 
         audioSource = GetComponent<AudioSource>();
     }
@@ -51,11 +52,12 @@ public class GameManager : MonoBehaviour {
                 break;
             case GameState.RESPAWN:
                 camera.StopScreenShake();
-                //playerController.transform.position = restartPos;
+                playerController.transform.position = restartPos;
+                LevelManager.AudioManager.Restart();
                 //restart music here
                 state = GameState.NONE;
                 
-                SceneManager.LoadScene("Lose");
+                
                 break;
             case GameState.NONE:
                 break;
@@ -75,8 +77,8 @@ public class GameManager : MonoBehaviour {
     }
 
     public void PlayerDied() {
-        return;
-        timeRemaining = 4.0f;
+        
+        timeRemaining =  loseSound.length * 0.1f;
         
         state = GameState.IS_DYING;
 

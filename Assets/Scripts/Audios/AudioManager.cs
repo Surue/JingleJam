@@ -31,4 +31,9 @@ public class AudioManager : MonoBehaviour, LevelManager.IPausedListener
     public void OnUnpaused() {
         audioSource.Play();
     }
+
+    public void Restart() {
+        audioSource.time = 0;
+        
+    }
 }

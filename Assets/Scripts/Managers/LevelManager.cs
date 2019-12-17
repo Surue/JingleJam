@@ -14,12 +14,14 @@ public class LevelManager : MonoBehaviour {
     static LevelManager instance = null;
 
     [SerializeField] AudioPeer audioPeer;
+    [SerializeField] AudioManager audioManager;
     [SerializeField] PlayerController playerController;
     [SerializeField] GameManager gameManager;
     
     public static LevelManager Instance => instance;
 
     public static AudioPeer AudioPeer => instance.audioPeer;
+    public static AudioManager AudioManager => instance.audioManager;
     public static PlayerController PlayerController => instance.playerController;
     public static GameManager GameManager => instance.gameManager;
 
