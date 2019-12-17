@@ -956,6 +956,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4833921592881438625, guid: 5ba2d7483edfc9248917564a825874d5,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182874412875858800, guid: 5ba2d7483edfc9248917564a825874d5,
+        type: 3}
+      propertyPath: speedAccumulation
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182874412875858800, guid: 5ba2d7483edfc9248917564a825874d5,
+        type: 3}
+      propertyPath: snowAccumulationFactor
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5182874412875858800, guid: 5ba2d7483edfc9248917564a825874d5,
+        type: 3}
+      propertyPath: healthReductionOnHit
+      value: 0.75
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ba2d7483edfc9248917564a825874d5, type: 3}
 --- !u!1 &452101938

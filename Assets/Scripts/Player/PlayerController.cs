@@ -20,8 +20,6 @@ public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
 
     bool isPaused = false;
 
-    bool hit = false;
-
     void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
         rigidBody.gravityScale = gravityScale;
@@ -40,7 +38,6 @@ public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
         GroundCheck();
         Jump();
         MoveRight();
-        Dead();
     }
 
     void MoveRight() {
@@ -57,14 +54,6 @@ public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
         isGrounded = groundChecker.IsGrounded;
     }
 
-    void Dead() {
-        if (hitDetector.hasHit || hit) {
-            LevelManager.GameManager.PlayerDied();
-            hit = false;
-            hitDetector.SetHasHitToFalse();
-        }
-    }
-
     public void OnPaused() {
         isPaused = true;
         rigidBody.velocity = Vector2.zero;
@@ -74,10 +63,5 @@ public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
     public void OnUnpaused() {
         isPaused = false;
         rigidBody.gravityScale = gravityScale;
-    }
-
-    void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle"))
-            hit = true;
     }
 }

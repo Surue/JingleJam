@@ -10,6 +10,8 @@ public class GroundChecker : MonoBehaviour {
     [SerializeField] ParticleSystem particleSystem;
     Rigidbody2D body;
     
+    bool hasHit = false;
+    public bool HasHit => hasHit;
     public bool IsGrounded => isGrounded;
     public bool IsTouchingSnow => isTouchingSnow;
 
@@ -23,12 +25,23 @@ public class GroundChecker : MonoBehaviour {
         isFalling = body.velocity.y < -1;
     }
 
+    void LateUpdate() {
+        hasHit = false;
+    }
+
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.layer != LayerMask.NameToLayer("Ground") &&
-            other.gameObject.layer != LayerMask.NameToLayer("Obstacle")) return;
-        
-        if (isFalling) {
-            particleSystem.Play();
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground")) {
+            if (isFalling) {
+                particleSystem.Play();
+            }
+        }
+
+        if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle")) {
+            hasHit = true;
+            
+            if (isFalling) {
+                particleSystem.Play();
+            }
         }
     }
 

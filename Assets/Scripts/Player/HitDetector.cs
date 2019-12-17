@@ -4,13 +4,19 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class HitDetector : MonoBehaviour {
-    public bool hasHit = false;
+    bool hasHit = false;
+    public bool HasHit => hasHit;
+
+    void LateUpdate() {
+        hasHit = false;
+    }
 
     public void SetHasHitToFalse() {
         hasHit = false;
     }
     void OnTriggerEnter2D(Collider2D other) {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Ground")) {
+        if (other.gameObject.layer == LayerMask.NameToLayer("Ground") ||
+            other.gameObject.layer == LayerMask.NameToLayer("Obstacle") ) {
             hasHit = true;
         }
     }
