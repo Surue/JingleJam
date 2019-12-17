@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
         LevelManager.Instance.AddPauseListener(this);
     }
     
-    void Update() {
+    void FixedUpdate() {
         if(isPaused) return;
     
         GroundCheck();
@@ -47,7 +47,7 @@ public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
     void Jump() {
         if(!isGrounded || !Input.GetButton("Jump")) return;
         
-        rigidBody.velocity = new Vector2(rigidBody.velocity.x, jumpForce);
+        rigidBody.velocity = new Vector2(speed, jumpForce);
     }
 
     void GroundCheck() {

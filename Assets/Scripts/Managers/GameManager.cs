@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.SceneManagement;
+using Debug = UnityEngine.Debug;
 
 public class GameManager : MonoBehaviour {
     CameraBehavior camera;
@@ -14,6 +12,11 @@ public class GameManager : MonoBehaviour {
 
     float timeRemaining = 0;
 
+    [Header("Sounds")] 
+    [SerializeField] AudioClip loseSound;
+    [SerializeField] AudioClip winSound;
+    AudioSource audioSource;
+    
     enum DeathStat {
         NONE,
         IS_DYING,
@@ -24,7 +27,9 @@ public class GameManager : MonoBehaviour {
 
     void Start() {
         camera = FindObjectOfType<CameraBehavior>();
-        playerController = FindObjectOfType<PlayerController>();
+        playerController = LevelManager.PlayerController;
+
+        audioSource = GetComponent<AudioSource>();
     }
 
     void FixedUpdate() {
@@ -43,14 +48,20 @@ public class GameManager : MonoBehaviour {
                 break;
             case DeathStat.RESPAWN:
                 camera.StopScreenShake();
-//                playerController.transform.position = restartPos;
+                //playerController.transform.position = restartPos;
                 //restart music here
                 deathStat = DeathStat.NONE;
+                
+                SceneManager.LoadScene("MainMenu");
                 break;
         }
     }
 
     public void PlayerDied() {
+        Debug.Break();
         deathStat = DeathStat.IS_DYING;
+
+        audioSource.clip = loseSound;
+        audioSource.Play();
     }
 }

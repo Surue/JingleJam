@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3177523690487646121}
   - component: {fileID: 3177523690487646120}
   - component: {fileID: 544149365}
+  - component: {fileID: 544149366}
   m_Layer: 9
   m_Name: Fir_2x4
   m_TagString: Untagged
@@ -72,12 +73,12 @@ SpriteRenderer:
   m_SortingLayerID: 648391315
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 37907de3d9f258247943fcd664f1a914, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 75503d152c834784f95f0e61349956b4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 4, y: 4}
+  m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -166,7 +167,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 4, y: 4}
-    newSize: {x: 4, y: 4}
+    newSize: {x: 5.12, y: 5.12}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -174,3 +175,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.4620972, y: 4}
   m_EdgeRadius: 0
+--- !u!114 &544149366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3177523690487646167}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b6e3802205650d40b26b3bef5a0d711, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defaultSprite: {fileID: 21300000, guid: 75503d152c834784f95f0e61349956b4, type: 3}
+  snowySprite: {fileID: 21300000, guid: dfa65c09c3fe3eb4e8ada8a6f389479b, type: 3}

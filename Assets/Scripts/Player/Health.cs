@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Health : MonoBehaviour, LevelManager.IPausedListener {
     SpriteRenderer spriteRenderer;
@@ -16,17 +17,31 @@ public class Health : MonoBehaviour, LevelManager.IPausedListener {
 
     [Header("Health")] [SerializeField] float healthReductionOnHit = 0.5f;
 
+    [Header("Sounds")] 
+    [SerializeField] List<AudioClip> damageSounds;
+
+    AudioSource audioSource;
+
     bool isPaused = false;
+
+    float invulnaribitlyTimer = 1;
+    float timer = 1;
     
     void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         hitDetector = GetComponentInChildren<HitDetector>();
         groundChecker = GetComponentInChildren<GroundChecker>();
+
+        audioSource = GetComponent<AudioSource>();
+        
+        LevelManager.Instance.AddPauseListener(this);
     }
 
     void Update() {
         if(isPaused) return;
+
+        invulnaribitlyTimer -= Time.deltaTime;
         
         if (groundChecker.IsTouchingSnow) {
             spriteRenderer.color = Color.white;
@@ -36,7 +51,7 @@ public class Health : MonoBehaviour, LevelManager.IPausedListener {
             spriteRenderer.color = Color.red;
         }
 
-        TestDead();
+        TestDamage();
 
         transform.localScale = Vector3.one * (1 + snowAccumulated);
 
@@ -45,16 +60,25 @@ public class Health : MonoBehaviour, LevelManager.IPausedListener {
         }
     }
     
-    
+    void TestDamage() {
+        if (invulnaribitlyTimer > 0) return;
+        
+        if (!hitDetector.HasHit && !groundChecker.HasHit) return;
 
-    void TestDead() {
-        if (hitDetector.HasHit || groundChecker.HasHit) {
-            snowAccumulated -= healthReductionOnHit;
-            if (snowAccumulated < 0) {
-                snowAccumulated = 0;
-            }
-            LevelManager.GameManager.PlayerDied();
-        }
+        invulnaribitlyTimer = timer;
+        
+        Debug.Log("1 snow = " + snowAccumulated);  
+        snowAccumulated -= healthReductionOnHit;
+
+        audioSource.clip = damageSounds[Random.Range(0, damageSounds.Count)];
+        audioSource.Play();
+
+        if (!(snowAccumulated < 0)) return;
+        Debug.Log("2 snow = " + snowAccumulated);  
+        snowAccumulated = 0;
+        LevelManager.GameManager.PlayerDied();
+        
+        
     }
 
     public void OnPaused() {
