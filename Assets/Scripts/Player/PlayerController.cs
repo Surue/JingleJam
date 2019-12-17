@@ -28,8 +28,6 @@ public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
         
         groundChecker = GetComponentInChildren<GroundChecker>();
         hitDetector = GetComponentInChildren<HitDetector>();
-
-        gameManager = LevelManager.GameManager;
         
         jumpForce = Mathf.Sqrt(2 * jumpHeight * -Physics.gravity.y * rigidBody.gravityScale);
         
@@ -61,7 +59,7 @@ public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
 
     void Dead() {
         if (hitDetector.hasHit || hit) {
-            gameManager.PlayerDied();
+            LevelManager.GameManager.PlayerDied();
             hit = false;
             hitDetector.SetHasHitToFalse();
         }

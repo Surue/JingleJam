@@ -8,9 +8,11 @@ public class GameManager : MonoBehaviour {
     CameraBehavior camera;
     PlayerController playerController;
 
-    [Header("Death Stat")] [SerializeField]
-    float timeBeforTP = 0.2f;
+    [Header("Death Stat")]
+    [SerializeField] float timeBeforTP = 0.2f;
     Vector2 restartPos = Vector2.zero;
+
+    float timeRemaining = 0;
 
     enum DeathStat {
         NONE,
@@ -33,11 +35,17 @@ public class GameManager : MonoBehaviour {
         switch (deathStat) {
             case DeathStat.IS_DYING:
                 camera.StartScreenShake();
+                timeRemaining -= Time.fixedTime;
+                if (timeRemaining < 0) {
+                    deathStat = DeathStat.RESPAWN;
+                    timeRemaining = timeBeforTP;
+                }
                 break;
             case DeathStat.RESPAWN:
                 camera.StopScreenShake();
                 playerController.transform.position = restartPos;
                 //restart music here
+                deathStat = DeathStat.NONE;
                 break;
         }
     }
