@@ -14,7 +14,7 @@ public class GroundChecker : MonoBehaviour {
     public bool IsTouchingSnow => isTouchingSnow;
 
     bool isFalling = false;
-
+    
     void Start() {
         body = transform.parent.GetComponent<Rigidbody2D>();
     }

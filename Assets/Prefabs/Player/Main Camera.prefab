@@ -90,7 +90,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHeight: 10
   minHeight: -10
-  screenShakeAmount: 0.7
+  screenShakeAmount: 0.3
   screenShakeCancelDuration: 0.3
 --- !u!81 &2220341205853572903
 AudioListener:

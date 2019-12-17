@@ -11,10 +11,10 @@ public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
     GameManager gameManager;
 
     [Header("Player Settings")]
-    [SerializeField] float speed = (110.0f / 60.0f) * 2.0f;
-    [SerializeField] float jumpHeight = 3;
-
+    [SerializeField] float speed = (110.0f / 60.0f) * 4.0f;
+    [SerializeField] float jumpHeight = 2.3f;
     [SerializeField] float gravityScale = 6;
+    
     bool isGrounded = false;
     float jumpForce;
 
