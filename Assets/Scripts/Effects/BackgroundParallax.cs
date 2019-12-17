@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BackgroundParallax : MonoBehaviour {
+public class BackgroundParallax : MonoBehaviour, LevelManager.IPausedListener {
     [Serializable]
     class ParallaxGroup{
         public List<Transform> images;
@@ -16,6 +16,8 @@ public class BackgroundParallax : MonoBehaviour {
     [SerializeField] float sizeX = 20.48f;
 
     AudioPeer audioPeer;
+
+    bool isPaused = false;
 
     void Start() {
         foreach (ParallaxGroup parallaxGroup in parallaxGroups) {
@@ -31,12 +33,16 @@ public class BackgroundParallax : MonoBehaviour {
         }
 
         audioPeer = LevelManager.AudioPeer;
+        
+        LevelManager.Instance.AddPauseListener(this);
     }
 
     float beatValue = 0;
 
     // Update is called once per frame
     void Update() {
+        if (isPaused) return;
+        
         float tmpValue = 0;
         foreach (float f in audioPeer.freqBand) {
             tmpValue += f;
@@ -75,5 +81,13 @@ public class BackgroundParallax : MonoBehaviour {
                     parallaxGroup.imagesGhost[i].position.z);
             }
         }
+    }
+
+    public void OnPaused() {
+        isPaused = true;
+    }
+
+    public void OnUnpaused() {
+        isPaused = false;
     }
 }

@@ -39,6 +39,10 @@ public class LevelManager : MonoBehaviour {
         
     }
 
+    public void AddPauseListener(IPausedListener listener) {
+        callbacks.Add(listener);
+    }
+
     public void Pause() {
         foreach (IPausedListener pausedListener in callbacks) {
             pausedListener.OnPaused();

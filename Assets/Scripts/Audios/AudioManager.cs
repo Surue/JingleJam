@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.Audio;
 
-public class AudioManager : MonoBehaviour
+public class AudioManager : MonoBehaviour, LevelManager.IPausedListener
 {
     [SerializeField] AudioSource audioSource;
 
@@ -13,10 +13,19 @@ public class AudioManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start() {
+        LevelManager.Instance.AddPauseListener(this);
     }
 
     // Update is called once per frame
     void Update() {
         
+    }
+
+    public void OnPaused() {
+        audioSource.Pause();
+    }
+
+    public void OnUnpaused() {
+        audioSource.Play();
     }
 }
