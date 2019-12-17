@@ -13,20 +13,15 @@ public class LevelManager : MonoBehaviour {
 
     static LevelManager instance = null;
 
-    int val = 10;
-
     [SerializeField] AudioPeer audioPeer;
+    [SerializeField] PlayerController playerController;
+    [SerializeField] GameManager gameManager;
     
     public static LevelManager Instance => instance;
-    
-    public static int Value => instance.val;
 
     public static AudioPeer AudioPeer => instance.audioPeer;
-
-
-    static GameManager _gameManager;
-
-    public static GameManager gameManager => _gameManager;
+    public static PlayerController PlayerController => instance.playerController;
+    public static GameManager GameManager => instance.gameManager;
 
     void Awake() {
         instance = this;
@@ -34,7 +29,6 @@ public class LevelManager : MonoBehaviour {
 
     // Start is called before the first frame update
     void Start() {
-        _gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame

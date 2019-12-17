@@ -16,8 +16,13 @@ public class BackgroundParallax : MonoBehaviour, LevelManager.IPausedListener {
     [SerializeField] float sizeX = 20.48f;
 
     AudioPeer audioPeer;
-
+    float beatValue = 0;
+    
     bool isPaused = false;
+
+    float playerStartPosX;
+    float playerOffsetPosX;
+    PlayerController player;
 
     void Start() {
         foreach (ParallaxGroup parallaxGroup in parallaxGroups) {
@@ -35,13 +40,17 @@ public class BackgroundParallax : MonoBehaviour, LevelManager.IPausedListener {
         audioPeer = LevelManager.AudioPeer;
         
         LevelManager.Instance.AddPauseListener(this);
-    }
 
-    float beatValue = 0;
+        player = LevelManager.PlayerController;
+        playerStartPosX = player.transform.position.x;
+        transform.position = new Vector3(playerStartPosX, 0, 0);
+    }
 
     // Update is called once per frame
     void Update() {
         if (isPaused) return;
+
+        playerOffsetPosX = player.transform.position.x - playerStartPosX;
         
         float tmpValue = 0;
         foreach (float f in audioPeer.freqBand) {
@@ -56,29 +65,36 @@ public class BackgroundParallax : MonoBehaviour, LevelManager.IPausedListener {
             isBeat = true;
         }
         
+        Debug.Log(Vector3.right * playerOffsetPosX);
+        
+        transform.position = new Vector3(playerStartPosX + playerOffsetPosX, 0, 0);
+        
         foreach (ParallaxGroup parallaxGroup in parallaxGroups) {
-            Vector3 displacementVector = Time.deltaTime * parallaxGroup.speed * Vector3.left;
+            Vector3 displacementVector = (Time.deltaTime * parallaxGroup.speed * Vector3.left);
 
             for (int i = 0; i < parallaxGroup.images.Count; i++) {
-                parallaxGroup.images[i].position += displacementVector;
-                parallaxGroup.imagesGhost[i].position += displacementVector;
+                parallaxGroup.images[i].localPosition += displacementVector;
+                parallaxGroup.imagesGhost[i].localPosition += displacementVector;
 
                 //Beat effect
                 if (isBeat) {
-                    parallaxGroup.imagesGhost[i].position += Vector3.up * beatValue; 
-                } else if(parallaxGroup.imagesGhost[i].position.y > 0) {
-                    parallaxGroup.imagesGhost[i].position += Vector3.down * Time.deltaTime; 
-                    beatValue = parallaxGroup.imagesGhost[i].position.y;
+                    parallaxGroup.imagesGhost[i].localPosition += Vector3.up * beatValue; 
+                } else if(parallaxGroup.imagesGhost[i].localPosition.y > 0) {
+                    parallaxGroup.imagesGhost[i].localPosition += Vector3.down * Time.deltaTime; 
+                    beatValue = parallaxGroup.imagesGhost[i].localPosition.y;
                 }
                 
                 //If outside bounds, move it 
-                if (!(parallaxGroup.images[i].position.x < -sizeX)) continue;
-                parallaxGroup.images[i].position = new Vector3(parallaxGroup.images[i].position.x + (2 * sizeX),
-                    parallaxGroup.images[i].position.y, parallaxGroup.images[i].position.z);
+                if (!(parallaxGroup.images[i].localPosition.x < -sizeX)) continue;
+                parallaxGroup.images[i].localPosition = new Vector3(
+                    parallaxGroup.images[i].localPosition.x + (2 * sizeX),
+                    parallaxGroup.images[i].localPosition.y, 
+                    parallaxGroup.images[i].localPosition.z);
                     
-                parallaxGroup.imagesGhost[i].position = new Vector3(
-                    parallaxGroup.imagesGhost[i].position.x + (2 * sizeX), parallaxGroup.imagesGhost[i].position.y,
-                    parallaxGroup.imagesGhost[i].position.z);
+                parallaxGroup.imagesGhost[i].localPosition = new Vector3(
+                    parallaxGroup.imagesGhost[i].localPosition.x + (2 * sizeX), 
+                    parallaxGroup.imagesGhost[i].localPosition.y,
+                    parallaxGroup.imagesGhost[i].localPosition.z);
             }
         }
     }

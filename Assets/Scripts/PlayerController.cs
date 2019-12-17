@@ -27,9 +27,9 @@ public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
         rigidBody.gravityScale = gravityScale;
         
         groundChecker = GetComponentInChildren<GroundChecker>();
-        hitDetector = GetComponent<HitDetector>();
+        hitDetector = GetComponentInChildren<HitDetector>();
 
-        gameManager = LevelManager.gameManager;
+        gameManager = LevelManager.GameManager;
         
         jumpForce = Mathf.Sqrt(2 * jumpHeight * -Physics.gravity.y * rigidBody.gravityScale);
         
