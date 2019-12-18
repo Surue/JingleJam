@@ -5,11 +5,12 @@ public class AudioManager : MonoBehaviour, LevelManager.IPausedListener
 {
     [SerializeField] AudioSource audioSource;
 
-//   readonly float _cutOffMax = 22000; old function
     readonly float cutOffHalf = 4000;
     readonly float cutOffMin = 10;
 
     float _sleepTime;
+
+    bool isPaused = false;
 
     // Start is called before the first frame update
     void Start() {
@@ -18,6 +19,8 @@ public class AudioManager : MonoBehaviour, LevelManager.IPausedListener
 
     // Update is called once per frame
     void Update() {
+        if (isPaused) return;
+        
         if (!audioSource.isPlaying) {
             LevelManager.GameManager.Victory();
             Destroy(this);
@@ -26,10 +29,14 @@ public class AudioManager : MonoBehaviour, LevelManager.IPausedListener
 
     public void OnPaused() {
         audioSource.Pause();
+
+        isPaused = true;
     }
 
     public void OnUnpaused() {
         audioSource.Play();
+
+        isPaused = false;
     }
 
     public void Restart() {
