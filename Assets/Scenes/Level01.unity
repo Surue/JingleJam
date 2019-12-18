@@ -9666,26 +9666,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2683708161752740714, guid: 114068dc199e13340be103a542abd991,
-        type: 3}
-      propertyPath: parallaxGroups.Array.data[3].speed
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2683708161752740714, guid: 114068dc199e13340be103a542abd991,
-        type: 3}
-      propertyPath: parallaxGroups.Array.data[2].speed
-      value: 1.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 2683708161752740714, guid: 114068dc199e13340be103a542abd991,
-        type: 3}
-      propertyPath: parallaxGroups.Array.data[1].speed
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2683708161752740714, guid: 114068dc199e13340be103a542abd991,
-        type: 3}
-      propertyPath: parallaxGroups.Array.data[0].speed
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2683708161752740715, guid: 114068dc199e13340be103a542abd991,
         type: 3}
       propertyPath: m_Name

@@ -18,6 +18,7 @@ public class CameraBehavior : MonoBehaviour {
     [SerializeField] float screenShakeAmount = 0.7f;
     [SerializeField] float screenShakeCancelDuration = 1.0f;
     float screenShakeTimeBeforStop;
+    float timer;
 
     enum ShakeStat {
         NO_SHAKE,
@@ -59,11 +60,17 @@ public class CameraBehavior : MonoBehaviour {
             case ShakeStat.SHAKE_SHAKE:
                 transform.position = playerTransform.position + Random.insideUnitSphere * screenShakeAmount;
                 screenShakeTimeBeforStop = screenShakeCancelDuration;
+
+                timer -= Time.deltaTime;
+
+                if (timer < 0) {
+                    shakeStat = ShakeStat.CALM_DOWN; 
+                }
                 break;
             case ShakeStat.CALM_DOWN:
                 transform.position = 
                     playerTransform.position +
-                    Random.insideUnitSphere * screenShakeAmount * (screenShakeTimeBeforStop / screenShakeCancelDuration);
+                    (screenShakeTimeBeforStop / screenShakeCancelDuration) * screenShakeAmount * Random.insideUnitSphere;
 			
                 screenShakeTimeBeforStop -= Time.deltaTime;
 
@@ -73,8 +80,10 @@ public class CameraBehavior : MonoBehaviour {
         }
     }
     
-    public void StartScreenShake() {
+    public void StartScreenShake(float time) {
         shakeStat = ShakeStat.SHAKE_SHAKE;
+
+        timer = time;
     }
 
     public void StopScreenShake() {
