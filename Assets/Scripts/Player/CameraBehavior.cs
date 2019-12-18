@@ -35,7 +35,7 @@ public class CameraBehavior : MonoBehaviour {
         cameraMinHeight = minHeight + cameraHeight;
     }
 
-    void LateUpdate() {
+    void Update() {
         transform.position = playerTransform.position;
         ShakeThat();
         CheckHeight();
