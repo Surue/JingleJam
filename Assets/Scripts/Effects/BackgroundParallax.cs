@@ -24,6 +24,7 @@ public class BackgroundParallax : MonoBehaviour, LevelManager.IPausedListener {
     float playerStartPosX;
     float playerOffsetPosX;
     PlayerController player;
+    Rigidbody2D playerBody;
 
     void Start() {
         foreach (ParallaxGroup parallaxGroup in parallaxGroups) {
@@ -43,6 +44,8 @@ public class BackgroundParallax : MonoBehaviour, LevelManager.IPausedListener {
         LevelManager.Instance.AddPauseListener(this);
 
         player = LevelManager.PlayerController;
+        playerBody = player.GetComponent<Rigidbody2D>();
+        
         playerStartPosX = player.transform.position.x;
         transform.position = new Vector3(playerStartPosX, 0, 0);
     }
@@ -52,6 +55,8 @@ public class BackgroundParallax : MonoBehaviour, LevelManager.IPausedListener {
         if (isPaused) return;
 
         playerOffsetPosX = player.transform.position.x - playerStartPosX;
+        
+//        if (playerBody.velocity.x < 0.1f) return;
         
         float tmpValue = audioPeer.freqBand.Sum();
 
@@ -66,7 +71,7 @@ public class BackgroundParallax : MonoBehaviour, LevelManager.IPausedListener {
         transform.position = new Vector3(playerStartPosX + playerOffsetPosX, 0, 0);
         
         foreach (ParallaxGroup parallaxGroup in parallaxGroups) {
-            Vector3 displacementVector = (Time.deltaTime * parallaxGroup.speed * Vector3.left);
+            Vector3 displacementVector = (Time.deltaTime * parallaxGroup.speed * Vector3.left) * playerBody.velocity.x;
 
             for (int i = 0; i < parallaxGroup.images.Count; i++) {
                 parallaxGroup.images[i].localPosition += displacementVector;
