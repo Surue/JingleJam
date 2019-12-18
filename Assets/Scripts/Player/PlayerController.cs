@@ -58,6 +58,10 @@ public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
         rigidBody.velocity = new Vector2(speed, jumpForce);
     }
 
+    public void AddJump(float force) {
+        rigidBody.velocity = new Vector2(speed, force);
+    }
+
     void GroundCheck() {
         isGrounded = groundChecker.IsGrounded;
     }
