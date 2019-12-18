@@ -20,13 +20,14 @@ public class GameManager : MonoBehaviour {
     
     enum GameState {
         NONE,
+        START,
         IS_DYING,
         RESPAWN,
         IS_WINING,
         WIN,
     }
 
-    GameState state = GameState.NONE;
+    GameState state = GameState.START;
 
     void Start() {
         camera = FindObjectOfType<CameraBehavior>();
@@ -48,6 +49,9 @@ public class GameManager : MonoBehaviour {
                     state = GameState.RESPAWN;
                     timeRemaining = timeBeforTP;
                 }
+                break;
+            case GameState.START:
+                state = GameState.RESPAWN;
                 break;
             case GameState.RESPAWN:
 //                camera.StopScreenShake();
@@ -85,8 +89,8 @@ public class GameManager : MonoBehaviour {
         
         state = GameState.IS_DYING;
 
-        audioSource.clip = loseSound;
-        audioSource.Play();
+//        audioSource.clip = loseSound;
+//        audioSource.Play();
     }
 
     public void Victory() {

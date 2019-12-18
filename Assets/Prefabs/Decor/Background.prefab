@@ -306,17 +306,17 @@ MonoBehaviour:
     - {fileID: 2683708163056692553}
     - {fileID: 2683708161319569057}
     imagesGhost: []
-    speed: 1
+    speed: 0.75
   - images:
     - {fileID: 2683708161878237745}
     - {fileID: 2683708161571610430}
     imagesGhost: []
-    speed: 1.25
+    speed: 0.9
   - images:
     - {fileID: 2683708161579232046}
     - {fileID: 2683708162391362397}
     imagesGhost: []
-    speed: 1.5
+    speed: 1
   sizeX: 20.48
 --- !u!1 &2683708161878237710
 GameObject:
