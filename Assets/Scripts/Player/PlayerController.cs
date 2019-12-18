@@ -5,15 +5,20 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
     Rigidbody2D rigidBody;
+    SpriteRenderer spriteRenderer;
     GroundChecker groundChecker;
     HitDetector hitDetector;
 
     GameManager gameManager;
 
+    [SerializeField] BrokenPlayer prefabBrokenPlayer;
+
     [Header("Player Settings")]
     [SerializeField] float speed = (110.0f / 60.0f) * 4.0f;
     [SerializeField] float jumpHeight = 2.3f;
     [SerializeField] float gravityScale = 6;
+
+    float initialSpeed;
     
     bool isGrounded = false;
     float jumpForce;
@@ -27,6 +32,8 @@ public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
     void Start() {
         rigidBody = GetComponent<Rigidbody2D>();
         rigidBody.gravityScale = gravityScale;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
         
         groundChecker = GetComponentInChildren<GroundChecker>();
         hitDetector = GetComponentInChildren<HitDetector>();
@@ -34,6 +41,8 @@ public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
         jumpForce = Mathf.Sqrt(2 * jumpHeight * -Physics.gravity.y * rigidBody.gravityScale);
         
         LevelManager.Instance.AddPauseListener(this);
+
+        initialSpeed = speed;
     }
     
     void FixedUpdate() {
@@ -81,5 +90,21 @@ public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
         if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle")) {
             hasHit = true;
         }
+    }
+
+    public void Die() {
+        Instantiate(prefabBrokenPlayer, transform.position, Quaternion.identity);
+
+        spriteRenderer.enabled = false;
+        rigidBody.Sleep();
+
+        speed = 0;
+    }
+
+    public void Respawn() {
+        spriteRenderer.enabled = true;
+        rigidBody.WakeUp();
+
+        speed = initialSpeed;
     }
 }

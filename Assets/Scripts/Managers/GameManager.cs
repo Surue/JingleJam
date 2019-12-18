@@ -44,7 +44,8 @@ public class GameManager : MonoBehaviour {
     void Death() {
         switch (state) {
             case GameState.IS_DYING:
-                timeRemaining -= Time.fixedTime;
+                timeRemaining -= Time.fixedDeltaTime;
+                Debug.Log(timeRemaining);
                 if (timeRemaining < 0) {
                     state = GameState.RESPAWN;
                     timeRemaining = timeBeforTP;
@@ -59,13 +60,13 @@ public class GameManager : MonoBehaviour {
                 LevelManager.AudioManager.Restart();
                 //restart music here
                 state = GameState.NONE;
-                
+                LevelManager.PlayerController.Respawn();
                 
                 break;
             case GameState.NONE:
                 break;
             case GameState.IS_WINING:
-                timeRemaining -= Time.fixedTime;
+                timeRemaining -= Time.fixedDeltaTime;
                 if (timeRemaining < 0) {
                     state = GameState.WIN;
                     timeRemaining = timeBeforTP;
@@ -84,10 +85,12 @@ public class GameManager : MonoBehaviour {
         
         camera.StartScreenShake(0.5f);
         
-        timeRemaining = loseSound.length * 0.5f;
+        timeRemaining = 1;
         LevelManager.AudioManager.Stop();
         
         state = GameState.IS_DYING;
+        
+        LevelManager.PlayerController.Die();
 
 //        audioSource.clip = loseSound;
 //        audioSource.Play();

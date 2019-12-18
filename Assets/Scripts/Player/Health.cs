@@ -50,6 +50,8 @@ public class Health : MonoBehaviour, LevelManager.IPausedListener {
         
         if (!playerController.HasHit && !hitDetector.HasHit && transform.position.y > deathZone) return;
 
+        playerController.Die();
+
         audioSource.clip = damageSounds[Random.Range(0, damageSounds.Count)];
         audioSource.Play();
 
