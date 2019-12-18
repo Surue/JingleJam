@@ -37,14 +37,14 @@ public class GameManager : MonoBehaviour {
         audioSource = GetComponent<AudioSource>();
     }
 
-    void Update() {
+    void FixedUpdate() {
         Death();
     }
 
     void Death() {
         switch (state) {
             case GameState.IS_DYING:
-                timeRemaining -= Time.deltaTime;
+                timeRemaining -= Time.fixedTime;
                 if (timeRemaining < 0) {
                     state = GameState.RESPAWN;
                     timeRemaining = timeBeforTP;
@@ -65,7 +65,7 @@ public class GameManager : MonoBehaviour {
             case GameState.NONE:
                 break;
             case GameState.IS_WINING:
-                timeRemaining -= Time.deltaTime;
+                timeRemaining -= Time.fixedTime;
                 if (timeRemaining < 0) {
                     state = GameState.WIN;
                     timeRemaining = timeBeforTP;
