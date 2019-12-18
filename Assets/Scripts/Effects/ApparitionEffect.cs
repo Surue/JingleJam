@@ -11,6 +11,7 @@ public class ApparitionEffect : MonoBehaviour {
     enum State {
         DOWN,
         RISING,
+        GOING_DOWN,
         UP
     }
 
@@ -18,12 +19,15 @@ public class ApparitionEffect : MonoBehaviour {
 
     [SerializeField] float timer = 1;
 
+    float initalTimer;
+    
     [SerializeField] AnimationCurve apparitionCurve;
     Vector3 downPosition;
     
     // Start is called before the first frame update
-    void Start()
-    {
+    void Start() {
+        initalTimer = timer;
+        
         downPosition = transform.position + Vector3.down * offsetY;
     }
 
@@ -41,9 +45,22 @@ public class ApparitionEffect : MonoBehaviour {
                 if (timer <= 0) {
                     state = State.UP;
                     transform.position = downPosition + Vector3.up * offsetY;
+
+                    timer = initalTimer;
                 }
                 break;
             case State.UP:
+                break;
+            case State.GOING_DOWN:
+                transform.position = downPosition + apparitionCurve.Evaluate(1 - timer) * offsetY * Vector3.down;
+                timer -= Time.deltaTime;
+
+                if (timer <= 0) {
+                    state = State.DOWN;
+                    transform.position = downPosition + Vector3.up * offsetY;
+                    
+                    timer = initalTimer;
+                }
                 break;
             default:
                 throw new ArgumentOutOfRangeException();
@@ -52,5 +69,9 @@ public class ApparitionEffect : MonoBehaviour {
 
     void OnBecameVisible() {
         state = State.RISING;
+    }
+
+    void OnBecameInvisible() {
+        state = State.GOING_DOWN;
     }
 }

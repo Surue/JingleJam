@@ -45,7 +45,6 @@ public class GameManager : MonoBehaviour {
         switch (state) {
             case GameState.IS_DYING:
                 timeRemaining -= Time.fixedDeltaTime;
-                Debug.Log(timeRemaining);
                 if (timeRemaining < 0) {
                     state = GameState.RESPAWN;
                     timeRemaining = timeBeforTP;
