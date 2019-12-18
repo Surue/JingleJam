@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour {
     public void PlayerDied() {
         if(state == GameState.IS_DYING) return;
         
-        timeRemaining =  loseSound.length;
+        timeRemaining = loseSound.length * 0.5f;
         LevelManager.AudioManager.Stop();
         
         state = GameState.IS_DYING;

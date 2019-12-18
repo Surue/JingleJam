@@ -11,19 +11,25 @@ public class AudioManager : MonoBehaviour, LevelManager.IPausedListener
     float _sleepTime;
 
     bool isPaused = false;
+    
+    float timer = 0;
 
     // Start is called before the first frame update
     void Start() {
         LevelManager.Instance.AddPauseListener(this);
+
+        timer = audioSource.clip.length;
     }
 
     // Update is called once per frame
     void Update() {
         if (isPaused) return;
-        
-        if (!audioSource.isPlaying) {
+
+        timer -= Time.deltaTime;
+
+        if (timer <= 0) {
             LevelManager.GameManager.Victory();
-            Destroy(this);
+            timer = 10000;
         }
     }
 
@@ -42,7 +48,8 @@ public class AudioManager : MonoBehaviour, LevelManager.IPausedListener
     public void Restart() {
         isPaused = false;
         audioSource.time = 0;
-        
+        timer = audioSource.clip.length;
+        audioSource.Play();
     }
 
     public void Stop() {
