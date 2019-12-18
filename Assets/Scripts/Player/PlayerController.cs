@@ -45,19 +45,14 @@ public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
         initialSpeed = speed;
     }
     
-    void FixedUpdate() {
+    void Update() {
         if(isPaused) return;
     
         GroundCheck();
         Jump();
         MoveRight();
-
-        if (Input.GetKeyDown(KeyCode.A)) {
-            LevelManager.GameManager.Victory();
-            
-        }
     }
-
+    
     void LateUpdate() {
         hasHit = false;
     }

@@ -51,7 +51,7 @@ public class BackgroundParallax : MonoBehaviour, LevelManager.IPausedListener {
     }
 
     // Update is called once per frame
-    void Update() {
+    void LateUpdate() {
         if (isPaused) return;
 
         playerOffsetPosX = player.transform.position.x - playerStartPosX;
@@ -71,7 +71,7 @@ public class BackgroundParallax : MonoBehaviour, LevelManager.IPausedListener {
         transform.position = new Vector3(playerStartPosX + playerOffsetPosX, 0, 0);
         
         foreach (ParallaxGroup parallaxGroup in parallaxGroups) {
-            Vector3 displacementVector = (Time.deltaTime * parallaxGroup.speed * Vector3.left) * playerBody.velocity.x;
+            Vector3 displacementVector = (Time.deltaTime * parallaxGroup.speed * playerBody.velocity.x) * Vector3.left;
 
             for (int i = 0; i < parallaxGroup.images.Count; i++) {
                 parallaxGroup.images[i].localPosition += displacementVector;
