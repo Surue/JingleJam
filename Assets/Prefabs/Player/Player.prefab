@@ -4935,6 +4935,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15e5b5ac610a15446a19e19159973669, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  prefabBrokenPlayer: {fileID: 438501293802971400, guid: c6ada51e86721b94ea1b20fe09c6d537,
+    type: 3}
   speed: 7.333332
   jumpHeight: 2.4
   gravityScale: 6

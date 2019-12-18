@@ -18,6 +18,7 @@ public class ApparitionEffect : MonoBehaviour {
     State state = State.DOWN;
 
     [SerializeField] float timer = 1;
+    [SerializeField] float speed = 1.5f;
 
     float initalTimer;
     
@@ -39,7 +40,7 @@ public class ApparitionEffect : MonoBehaviour {
                 
                 break;
             case State.RISING:
-                transform.position = downPosition + apparitionCurve.Evaluate(1 - timer) * offsetY * Vector3.up;
+                transform.position = downPosition + apparitionCurve.Evaluate(1 - timer * speed) * offsetY * Vector3.up ;
                 timer -= Time.deltaTime;
 
                 if (timer <= 0) {
@@ -52,7 +53,7 @@ public class ApparitionEffect : MonoBehaviour {
             case State.UP:
                 break;
             case State.GOING_DOWN:
-                transform.position = downPosition + apparitionCurve.Evaluate(1 - timer) * offsetY * Vector3.down;
+                transform.position = downPosition + apparitionCurve.Evaluate(1 - timer * speed) * offsetY * Vector3.down ;
                 timer -= Time.deltaTime;
 
                 if (timer <= 0) {
