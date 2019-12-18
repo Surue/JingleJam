@@ -40,7 +40,13 @@ public class AudioManager : MonoBehaviour, LevelManager.IPausedListener
     }
 
     public void Restart() {
+        isPaused = false;
         audioSource.time = 0;
         
+    }
+
+    public void Stop() {
+        isPaused = true;
+        audioSource.Stop();
     }
 }
