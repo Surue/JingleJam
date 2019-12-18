@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offsetY: 2
   timer: 1
+  speed: 2
   apparitionCurve:
     serializedVersion: 2
     m_Curve:

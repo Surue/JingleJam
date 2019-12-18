@@ -7171,6 +7171,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   beatSize: 16
   offset: 16
+  duration: 1000
 --- !u!4 &827010198
 Transform:
   m_ObjectHideFlags: 0

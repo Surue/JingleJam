@@ -40,8 +40,8 @@ public class ApparitionEffect : MonoBehaviour {
                 
                 break;
             case State.RISING:
-                transform.position = downPosition + apparitionCurve.Evaluate(1 - timer * speed) * offsetY * Vector3.up ;
-                timer -= Time.deltaTime;
+                transform.position = downPosition + apparitionCurve.Evaluate(1 - timer) * offsetY * Vector3.up ;
+                timer -= Time.deltaTime * speed;
 
                 if (timer <= 0) {
                     state = State.UP;
@@ -53,8 +53,8 @@ public class ApparitionEffect : MonoBehaviour {
             case State.UP:
                 break;
             case State.GOING_DOWN:
-                transform.position = downPosition + apparitionCurve.Evaluate(1 - timer * speed) * offsetY * Vector3.down ;
-                timer -= Time.deltaTime;
+                transform.position = downPosition + apparitionCurve.Evaluate(1 - timer) * offsetY * Vector3.down ;
+                timer -= Time.deltaTime * speed;
 
                 if (timer <= 0) {
                     state = State.DOWN;

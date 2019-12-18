@@ -22,6 +22,8 @@ public class Gift : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D other) {
         if (other.gameObject.layer == LayerMask.NameToLayer("Player")) {
+            
+            if(playerController.transform.position.y > transform.position.y + 0.75 )
             playerController.AddJump(force);
         }
     }
