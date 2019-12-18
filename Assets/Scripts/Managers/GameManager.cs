@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour {
                 }
                 break;
             case GameState.WIN:
-                SceneManager.LoadScene("Win");
+                SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
                 break;
             default:
                 throw new ArgumentOutOfRangeException();

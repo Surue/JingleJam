@@ -51,6 +51,11 @@ public class PlayerController : MonoBehaviour, LevelManager.IPausedListener {
         GroundCheck();
         Jump();
         MoveRight();
+
+        if (Input.GetKeyDown(KeyCode.A)) {
+            LevelManager.GameManager.Victory();
+            
+        }
     }
 
     void LateUpdate() {

@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 3506080412931873751}
   - component: {fileID: 3506080412931873744}
   - component: {fileID: 3506080412931873745}
-  - component: {fileID: 910678351}
   - component: {fileID: 910678352}
+  - component: {fileID: 8546705648623980933}
   m_Layer: 9
   m_Name: SugarCane_2x3
   m_TagString: Untagged
@@ -98,6 +98,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offsetY: 3
   timer: 1
+  speed: 1.5
   apparitionCurve:
     serializedVersion: 2
     m_Curve:
@@ -149,32 +150,6 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!61 &910678351
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3506080412931873746}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 1d8c7bca778b3e74aa1f77e4f846f73f, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.02046585, y: -0.51859975}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 4, y: 4}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.17556, y: 2.9628005}
-  m_EdgeRadius: 0
 --- !u!114 &910678352
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,3 +164,29 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultSprite: {fileID: 21300000, guid: 21e744337af3e1e499a93d39f1b3eba1, type: 3}
   snowySprite: {fileID: 21300000, guid: dfecaa534a140c8419301a5b33838016, type: 3}
+--- !u!61 &8546705648623980933
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3506080412931873746}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 4, y: 4}
+    newSize: {x: 1, y: 1}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 4, y: 4}
+  m_EdgeRadius: 0
