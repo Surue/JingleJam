@@ -7,7 +7,6 @@ using Random = UnityEngine.Random;
 public class Health : MonoBehaviour, LevelManager.IPausedListener {
     SpriteRenderer spriteRenderer;
 
-    GroundChecker groundChecker;
     HitDetector hitDetector;
 
     [Header("Health")] 
@@ -17,6 +16,8 @@ public class Health : MonoBehaviour, LevelManager.IPausedListener {
     [SerializeField] List<AudioClip> damageSounds;
 
     [SerializeField] float deathZone = -12;
+
+    [SerializeField] PlayerController playerController;
     
     AudioSource audioSource;
 
@@ -27,10 +28,11 @@ public class Health : MonoBehaviour, LevelManager.IPausedListener {
     void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
 
-        hitDetector = GetComponentInChildren<HitDetector>();
-        groundChecker = GetComponentInChildren<GroundChecker>();
+        playerController = LevelManager.PlayerController;
 
         audioSource = GetComponent<AudioSource>();
+
+        hitDetector = GetComponentInChildren<HitDetector>();
         
         LevelManager.Instance.AddPauseListener(this);
     }
@@ -46,7 +48,7 @@ public class Health : MonoBehaviour, LevelManager.IPausedListener {
     void TestDamage() {
         if (deadTimer > 0) return;
         
-        if (!hitDetector.HasHit && !groundChecker.HasHit && transform.position.y > deathZone) return;
+        if (!playerController.HasHit && !hitDetector.HasHit && transform.position.y > deathZone) return;
 
         audioSource.clip = damageSounds[Random.Range(0, damageSounds.Count)];
         audioSource.Play();
