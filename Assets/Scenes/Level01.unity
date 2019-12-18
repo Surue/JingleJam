@@ -893,6 +893,7 @@ GameObject:
   - component: {fileID: 61898709}
   - component: {fileID: 61898711}
   - component: {fileID: 61898710}
+  - component: {fileID: 61898712}
   m_Layer: 0
   m_Name: broken_snowball_06
   m_TagString: Untagged
@@ -908,7 +909,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 61898708}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.170998, y: -13.378001, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 261409009}
@@ -985,6 +986,61 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &61898712
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 61898708}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.0390625, y: 3}
+    newSize: {x: 3.0390625, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.61328125, y: -0.1875}
+      - {x: -0.68359375, y: -0.1015625}
+      - {x: -0.78515625, y: -0.046875}
+      - {x: -0.70703125, y: 0.0546875}
+      - {x: -0.61328125, y: 0.140625}
+      - {x: -0.38671875, y: 0.203125}
+      - {x: -0.37109375, y: 0.2109375}
+      - {x: -0.37109375, y: 0.25}
+      - {x: -0.41015625, y: 0.3125}
+      - {x: -0.55859375, y: 0.453125}
+      - {x: -0.67578125, y: 0.5859375}
+      - {x: -0.76953125, y: 0.640625}
+      - {x: -0.87109375, y: 0.7421875}
+      - {x: -1.0742188, y: 1.0234375}
+      - {x: -1.1054688, y: 1.0234375}
+      - {x: -1.1679688, y: 0.9609375}
+      - {x: -1.2304688, y: 0.859375}
+      - {x: -1.3164062, y: 0.7421875}
+      - {x: -1.4023438, y: 0.5625}
+      - {x: -1.4570312, y: 0.390625}
+      - {x: -1.4882812, y: 0.234375}
+      - {x: -1.4960938, y: 0.078125}
+      - {x: -1.4960938, y: -0.1015625}
+      - {x: -1.4726562, y: -0.328125}
+      - {x: -1.4257812, y: -0.5}
+      - {x: -1.3632812, y: -0.625}
+      - {x: -1.3085938, y: -0.625}
+      - {x: -0.96484375, y: -0.421875}
+      - {x: -0.69921875, y: -0.2734375}
+      - {x: -0.61328125, y: -0.21875}
 --- !u!1001 &64827474
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2373,7 +2429,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 261409007}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -6.91, y: -6.08, z: 0}
+  m_LocalPosition: {x: 12.45, y: -7.53, z: 0}
   m_LocalScale: {x: 0.33, y: 0.33, z: 1}
   m_Children:
   - {fileID: 2064715255}
@@ -8947,6 +9003,7 @@ GameObject:
   - component: {fileID: 1045494261}
   - component: {fileID: 1045494263}
   - component: {fileID: 1045494262}
+  - component: {fileID: 1045494264}
   m_Layer: 0
   m_Name: broken_snowball_03
   m_TagString: Untagged
@@ -8962,7 +9019,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1045494260}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.245998, y: -13.385001, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 261409009}
@@ -9039,6 +9096,62 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &1045494264
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1045494260}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.1171875, y: 3}
+    newSize: {x: 3.1171875, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.3554688, y: -0.5546875}
+      - {x: 1.4179688, y: -0.390625}
+      - {x: 1.4492188, y: -0.234375}
+      - {x: 1.4570312, y: -0.125}
+      - {x: 1.4570312, y: 0.1796875}
+      - {x: 1.4257812, y: 0.3203125}
+      - {x: 1.3867188, y: 0.46875}
+      - {x: 1.3710938, y: 0.5078125}
+      - {x: 1.3554688, y: 0.5078125}
+      - {x: 1.2929688, y: 0.484375}
+      - {x: 1.1054688, y: 0.375}
+      - {x: 0.89453125, y: 0.2890625}
+      - {x: 0.63671875, y: 0.2109375}
+      - {x: 0.60546875, y: 0.15625}
+      - {x: 0.68359375, y: 0.0625}
+      - {x: 0.85546875, y: -0.1171875}
+      - {x: 0.75390625, y: -0.2109375}
+      - {x: 0.65234375, y: -0.3203125}
+      - {x: 0.51171875, y: -0.359375}
+      - {x: 0.42578125, y: -0.40625}
+      - {x: 0.42578125, y: -0.453125}
+      - {x: 0.50390625, y: -0.515625}
+      - {x: 0.69921875, y: -0.7109375}
+      - {x: 0.76953125, y: -0.765625}
+      - {x: 0.88671875, y: -0.8359375}
+      - {x: 1.0117188, y: -1}
+      - {x: 1.0507812, y: -1.0234375}
+      - {x: 1.0742188, y: -1.0234375}
+      - {x: 1.1289062, y: -0.9609375}
+      - {x: 1.2382812, y: -0.796875}
+      - {x: 1.3320312, y: -0.609375}
 --- !u!4 &1046411879 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5192950540306538588, guid: 2eaf10f5cf2ac244882ca59b9b5582fd,
@@ -9770,6 +9883,7 @@ GameObject:
   - component: {fileID: 1141825824}
   - component: {fileID: 1141825826}
   - component: {fileID: 1141825825}
+  - component: {fileID: 1141825827}
   m_Layer: 0
   m_Name: broken_snowball_04
   m_TagString: Untagged
@@ -9785,7 +9899,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1141825823}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.192997, y: -13.408, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 261409009}
@@ -9862,6 +9976,60 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &1141825827
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1141825823}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 3.0390625}
+    newSize: {x: 3, y: 3.0390625}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.421875, y: -1.4414062}
+      - {x: 0.5625, y: -1.3945312}
+      - {x: 0.7421875, y: -1.3164062}
+      - {x: 0.9609375, y: -1.1679688}
+      - {x: 1.1015625, y: -1.0273438}
+      - {x: 1.1015625, y: -0.99609375}
+      - {x: 1.0859375, y: -0.96484375}
+      - {x: 0.8828125, y: -0.75390625}
+      - {x: 0.65625, y: -0.58203125}
+      - {x: 0.5546875, y: -0.44921875}
+      - {x: 0.4921875, y: -0.50390625}
+      - {x: 0.40625, y: -0.69140625}
+      - {x: 0.265625, y: -0.66015625}
+      - {x: 0.125, y: -0.48828125}
+      - {x: -0.0859375, y: -0.40234375}
+      - {x: -0.125, y: -0.40234375}
+      - {x: -0.140625, y: -0.41796875}
+      - {x: -0.140625, y: -0.53515625}
+      - {x: -0.234375, y: -0.76171875}
+      - {x: -0.25, y: -0.83984375}
+      - {x: -0.25, y: -1.0273438}
+      - {x: -0.3984375, y: -1.3476562}
+      - {x: -0.3984375, y: -1.4414062}
+      - {x: -0.390625, y: -1.4492188}
+      - {x: -0.2890625, y: -1.4804688}
+      - {x: -0.0859375, y: -1.4960938}
+      - {x: 0.1015625, y: -1.4960938}
+      - {x: 0.234375, y: -1.4804688}
+      - {x: 0.28125, y: -1.4726562}
 --- !u!4 &1149416084 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4782394980565225097, guid: 9c366c0467a30b3409a3cff96afc0126,
@@ -10536,6 +10704,7 @@ GameObject:
   - component: {fileID: 1244033695}
   - component: {fileID: 1244033697}
   - component: {fileID: 1244033696}
+  - component: {fileID: 1244033698}
   m_Layer: 0
   m_Name: broken_snowball_02
   m_TagString: Untagged
@@ -10551,7 +10720,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1244033694}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.185997, y: -13.348001, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 261409009}
@@ -10628,6 +10797,62 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &1244033698
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1244033694}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 3.0546875}
+    newSize: {x: 3, y: 3.0546875}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 1.421875, y: 0.51953125}
+      - {x: 1.3046875, y: 0.76953125}
+      - {x: 1.2421875, y: 0.86328125}
+      - {x: 1.0078125, y: 1.1210938}
+      - {x: 0.8671875, y: 1.2226562}
+      - {x: 0.7890625, y: 1.2695312}
+      - {x: 0.7421875, y: 1.3007812}
+      - {x: 0.609375, y: 1.3632812}
+      - {x: 0.421875, y: 1.4414062}
+      - {x: 0.328125, y: 1.4648438}
+      - {x: 0.2421875, y: 1.4648438}
+      - {x: 0.2109375, y: 1.4570312}
+      - {x: 0.21875, y: 0.98828125}
+      - {x: 0.25, y: 0.76953125}
+      - {x: 0.2734375, y: 0.66015625}
+      - {x: 0.1875, y: 0.52734375}
+      - {x: 0.1796875, y: 0.49609375}
+      - {x: 0.1953125, y: 0.46484375}
+      - {x: 0.53125, y: 0.48828125}
+      - {x: 0.609375, y: 0.35546875}
+      - {x: 0.6640625, y: 0.37109375}
+      - {x: 0.78125, y: 0.47265625}
+      - {x: 0.78125, y: 0.41796875}
+      - {x: 0.828125, y: 0.31640625}
+      - {x: 0.6953125, y: 0.19140625}
+      - {x: 0.703125, y: 0.16796875}
+      - {x: 0.7421875, y: 0.16796875}
+      - {x: 0.8046875, y: 0.17578125}
+      - {x: 1.0546875, y: 0.26953125}
+      - {x: 1.3671875, y: 0.42578125}
+      - {x: 1.421875, y: 0.46484375}
 --- !u!1001 &1244946735
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15315,6 +15540,7 @@ GameObject:
   - component: {fileID: 1843258156}
   - component: {fileID: 1843258158}
   - component: {fileID: 1843258157}
+  - component: {fileID: 1843258159}
   m_Layer: 0
   m_Name: broken_snowball_05
   m_TagString: Untagged
@@ -15330,7 +15556,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1843258155}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.185997, y: -13.385001, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 261409009}
@@ -15407,6 +15633,61 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &1843258159
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843258155}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 3}
+    newSize: {x: 3, y: 3}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.21875, y: -0.75}
+      - {x: -0.1328125, y: -0.6328125}
+      - {x: -0.1328125, y: -0.59375}
+      - {x: -0.140625, y: -0.5703125}
+      - {x: -0.2421875, y: -0.578125}
+      - {x: -0.40625, y: -0.625}
+      - {x: -0.5, y: -0.625}
+      - {x: -0.546875, y: -0.5859375}
+      - {x: -0.59375, y: -0.4765625}
+      - {x: -0.6328125, y: -0.46875}
+      - {x: -0.6953125, y: -0.5}
+      - {x: -0.6484375, y: -0.3828125}
+      - {x: -0.6015625, y: -0.234375}
+      - {x: -0.6171875, y: -0.2265625}
+      - {x: -0.6875, y: -0.2265625}
+      - {x: -1.1796875, y: -0.484375}
+      - {x: -1.3515625, y: -0.5859375}
+      - {x: -1.375, y: -0.6171875}
+      - {x: -1.375, y: -0.640625}
+      - {x: -1.296875, y: -0.796875}
+      - {x: -1.1796875, y: -0.9609375}
+      - {x: -1.0078125, y: -1.1484375}
+      - {x: -0.796875, y: -1.3046875}
+      - {x: -0.5546875, y: -1.4140625}
+      - {x: -0.4921875, y: -1.4375}
+      - {x: -0.4140625, y: -1.4609375}
+      - {x: -0.390625, y: -1.453125}
+      - {x: -0.2421875, y: -1.109375}
+      - {x: -0.2109375, y: -0.9921875}
+      - {x: -0.21875, y: -0.90625}
 --- !u!1001 &1849138615
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16987,6 +17268,7 @@ GameObject:
   - component: {fileID: 2064715255}
   - component: {fileID: 2064715257}
   - component: {fileID: 2064715256}
+  - component: {fileID: 2064715258}
   m_Layer: 0
   m_Name: broken_snowball_01
   m_TagString: Untagged
@@ -17002,7 +17284,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2064715254}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.19, y: -13.34, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 261409009}
@@ -17079,6 +17361,56 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!60 &2064715258
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2064715254}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3, y: 3.078125}
+    newSize: {x: 3, y: 3.078125}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.2578125, y: 0.7265625}
+      - {x: 0.2578125, y: 0.8515625}
+      - {x: 0.2421875, y: 0.8984375}
+      - {x: 0.234375, y: 1.4453125}
+      - {x: 0.21875, y: 1.4609375}
+      - {x: 0.1796875, y: 1.46875}
+      - {x: 0.078125, y: 1.4765625}
+      - {x: -0.09375, y: 1.4765625}
+      - {x: -0.234375, y: 1.4609375}
+      - {x: -0.359375, y: 1.4453125}
+      - {x: -0.6171875, y: 1.359375}
+      - {x: -0.796875, y: 1.2578125}
+      - {x: -0.9609375, y: 1.140625}
+      - {x: -1.109375, y: 1}
+      - {x: -1.109375, y: 0.953125}
+      - {x: -0.9140625, y: 0.7109375}
+      - {x: -0.5546875, y: 0.3671875}
+      - {x: -0.5078125, y: 0.3359375}
+      - {x: -0.2578125, y: 0.5546875}
+      - {x: -0.1484375, y: 0.4140625}
+      - {x: 0.015625, y: 0.3046875}
+      - {x: 0.15625, y: 0.3046875}
+      - {x: 0.1953125, y: 0.3828125}
+      - {x: 0.1484375, y: 0.4375}
+      - {x: 0.25, y: 0.625}
 --- !u!1001 &2071190030
 PrefabInstance:
   m_ObjectHideFlags: 0

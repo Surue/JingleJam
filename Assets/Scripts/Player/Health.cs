@@ -55,7 +55,7 @@ public class Health : MonoBehaviour, LevelManager.IPausedListener {
 
         LevelManager.GameManager.PlayerDied();
 
-        deadTimer = 2.5f;
+        deadTimer = 0.5f;
     }
 
     public void OnPaused() {
