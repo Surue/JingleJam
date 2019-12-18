@@ -79,7 +79,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void PlayerDied() {
-        if(state == GameState.IS_DYING) return;
+        if(state == GameState.IS_DYING || state == GameState.IS_WINING) return;
         
         camera.StartScreenShake(0.5f);
         

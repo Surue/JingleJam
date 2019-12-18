@@ -17,4 +17,8 @@ public class EndLevel : MonoBehaviour {
     {
         
     }
+
+    void OnTriggerEnter2D(Collider2D other) {
+        LevelManager.GameManager.Victory();
+    }
 }
