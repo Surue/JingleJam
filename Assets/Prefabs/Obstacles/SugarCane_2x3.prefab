@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3506080412931873745}
   - component: {fileID: 910678352}
   - component: {fileID: 8546705648623980933}
-  m_Layer: 9
+  m_Layer: 4
   m_Name: SugarCane_2x3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -174,7 +174,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
