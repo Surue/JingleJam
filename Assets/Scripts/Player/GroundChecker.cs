@@ -50,10 +50,6 @@ public class GroundChecker : MonoBehaviour {
             isGrounded = true;
             isTouchingSnow = true;
         }
-        
-        if (other.gameObject.layer == LayerMask.NameToLayer("Obstacle")) {
-            isGrounded = true;
-        }
     }
 
     void OnTriggerExit2D(Collider2D other) {

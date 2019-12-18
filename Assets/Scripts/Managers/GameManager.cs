@@ -57,7 +57,6 @@ public class GameManager : MonoBehaviour {
 //                camera.StopScreenShake();
                 playerController.transform.position = restartPos;
                 LevelManager.AudioManager.Restart();
-                //restart music here
                 state = GameState.NONE;
                 LevelManager.PlayerController.Respawn();
                 
